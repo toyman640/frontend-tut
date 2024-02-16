@@ -20,6 +20,12 @@ module Frontend
     # config.eager_load_paths << Rails.root.join("extras")
     # config.action_dispatch.cookies_same_site_protection = :none
     # config.session_store :cookie_store, key: '_backend', secure: Rails.env.production?
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins  "http://localhost:3001"
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true
+      end
+    end
 
 
     # Only loads a smaller set of middleware suitable for API only apps.
