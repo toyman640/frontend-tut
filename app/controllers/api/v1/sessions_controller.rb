@@ -17,6 +17,7 @@ class Api::V1::SessionsController < ApplicationController
   end
   def is_logged_in?
     @current_user = User.find(session[:user_id]) if session[:user_id]
+    puts "@current_user: #{@current_user.inspect}"
     if @current_user
       render json: {
         logged_in: true,
@@ -29,7 +30,7 @@ class Api::V1::SessionsController < ApplicationController
     end
   end
   def destroy
-    session.delete :user_id
+    session.delete(:user_id)
     render json: {
       status: 200,
       logged_out: true

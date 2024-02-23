@@ -8,14 +8,6 @@ Rails.application.configure do
   config.session_store :cookie_store, key: '_interslice_session'
   config.middleware.use ActionDispatch::Cookies
   config.middleware.use config.session_store, config.session_options
-  Rails.application.config.session_store :cookie_store, {
-    :key => '_your_app_name',
-    :domain => :all,
-    :same_site => :none,
-    :secure => :true,
-    :tld_length => 2
-  }
-
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
